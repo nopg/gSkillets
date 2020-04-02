@@ -1,0 +1,35 @@
+name: gARP_8772B787-9148-4C50-9324-178F60C50F70
+
+# label used for menu selection
+label: Grab Gratuitous ARP Test Commands
+
+description: |
+  Connect to PA or Panorama and determine
+  the required 'test arp' commands for an install.
+type: panos
+
+labels:
+  collection: Example Skillets
+
+variables:
+  - name: USERNAME
+    description: PA Username
+    default: admin
+    type_hint: text
+    help_text: The username to log into the PA with.
+  - name: PASSWORD
+    description: PA Password
+    default: admin
+    type_hint: password
+    help_text: The password to log into the PA with.
+
+snippets:
+  - name: script
+    file: garp-threaded.py
+    input_type: cli
+    output_type: json
+    outputs:
+      - name: captured_username
+        capture_value: 'output_example.captured_username'
+      - name: captured_password
+        capture_value: 'output_example.captured_password'
