@@ -7,7 +7,7 @@ def run_test():
     parser.add_argument("-p", "--password", help="Example Password", type=str)
     args = parser.parse_args()
 
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 3:
         print(sys.argv)
         print(len(sys.argv))
         parser.print_help()
