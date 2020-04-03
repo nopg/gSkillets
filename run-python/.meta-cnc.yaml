@@ -11,12 +11,12 @@ labels:
   collection: gSkillets
 
 variables:
-  - name: USERNAME
+  - name: username
     description: PA Username
     default: admin
     type_hint: text
     help_text: The username to log into the PA with.
-  - name: PASSWORD
+  - name: password
     description: PA Password
     default: admin
     type_hint: password
