@@ -4,7 +4,6 @@ label: Find Address Object
 description: |
   Find one address object and get the value (Skillet Testing)
 type: panos
-cmd: get
 
 labels:
   collection: gSkillets

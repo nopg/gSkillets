@@ -1,0 +1,34 @@
+name: get_addr_obj_1
+label: Find Address Object
+
+description: |
+  Find one address object and get the value (Skillet Testing)
+type: pan_validation
+
+labels:
+  collection: gSkillets
+
+variables:
+  - name: ADDR_OBJ_NAME
+    description: Address Object Name
+    default: test3
+    type_hint: text
+    help_text: This is the object name you want to find.
+
+snippets:
+  - name: parse config variable and capture addr-obj output
+    cmd: parse
+    variable: config
+    outputs:
+      # create found object
+      - name: found_obj
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address/entry[@name='{{ADDR_OBJ_NAME}}']
+  - name: test
+    cmd: validate
+    label: maybe print it out?
+    test: ADDR_OBJ_NAME is none
+    fail_message: |
+      This works! 
+      Here is the output:
+      h: {{found_obj}}
+    documentation_link: https://github.com/glspi
