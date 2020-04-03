@@ -8,6 +8,7 @@ def run_test():
     args = parser.parse_args()
 
     if len(sys.argv) != 5:
+        print(sys.argv)
         print(len(sys.argv))
         parser.print_help()
         parser.exit()
