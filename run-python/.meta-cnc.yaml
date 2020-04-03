@@ -18,7 +18,7 @@ variables:
     help_text: The username to log into the PA with.
   - name: password
     description: PA Password
-    default: admin
+    default: password
     type_hint: password
     help_text: The password to log into the PA with.
 
