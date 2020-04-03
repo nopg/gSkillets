@@ -6,7 +6,6 @@ label: Find Address Object
 description: |
   Find one address object and get the value (Skillet Testing)
 type: panos
-cmd: show
 
 labels:
   collection: gSkillets
@@ -20,6 +19,7 @@ variables:
 
 snippets:
   - name: get_addrobj
+    cmd: get
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
     file: addr-obj.xml
     #when: hostname != FW_NAME
