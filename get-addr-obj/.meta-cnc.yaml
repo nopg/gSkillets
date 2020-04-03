@@ -1,4 +1,4 @@
-name: get_addr_obj_1
+sname: get_addr_obj_1
 label: Find Address Object
 
 description: |
@@ -8,15 +8,18 @@ type: panos
 labels:
   collection: gSkillets
 
-variables:
-  - name: ADDR_OBJ_NAME
-    description: Address Object Name
-    default: panos-01
-    type_hint: text
-    help_text: This is the object name you want to find.
+# variables:
+#   - name: ADDR_OBJ_NAME
+#     description: Address Object Name
+#     default: panos-01
+#     type_hint: text
+#     help_text: This is the object name you want to find.
 
 snippets:
   - name: get_addrobj
     cmd: get
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address/entry[@name='{{ADDR_OBJ_NAME}}']
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address/entry[@name='test3']
+    output_type: text
+    outputs:
+      - name: results_as_str
     #when: hostname != FW_NAME
