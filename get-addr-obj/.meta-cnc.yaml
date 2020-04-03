@@ -19,7 +19,7 @@ variables:
 
 snippets:
   - name: get_addrobj
-    cmd: get
+    cmd: show
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
     file: addr-obj.xml
     #when: hostname != FW_NAME
