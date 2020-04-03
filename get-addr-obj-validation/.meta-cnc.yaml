@@ -26,7 +26,7 @@ snippets:
   - name: test
     cmd: validate
     label: maybe print it out?
-    test: ADDR_OBJ_NAME is none
+    test: found_obj | element_value('ip-netmask') == ('3.3.3.3/32')
     fail_message: |
       This works! 
       Here is the output:
