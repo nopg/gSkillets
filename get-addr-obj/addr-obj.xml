@@ -1,1 +1,1 @@
-entry[@name='{{ADDR_OBJ_NAME}}']
+<entry name="{{ADDR_OBJ_NAME}}"/>
