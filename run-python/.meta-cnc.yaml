@@ -1,0 +1,28 @@
+name: run_python_1
+
+# label used for menu selection
+label: Run test python script
+
+description: |
+  Grab values and print output
+type: python
+
+labels:
+  collection: gSkillets
+
+variables:
+  - name: USERNAME
+    description: PA Username
+    default: admin
+    type_hint: text
+    help_text: The username to log into the PA with.
+  - name: PASSWORD
+    description: PA Password
+    default: admin
+    type_hint: password
+    help_text: The password to log into the PA with.
+
+snippets:
+  - name: script
+    file: test.py
+    input_type: cli
