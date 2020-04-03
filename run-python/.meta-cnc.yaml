@@ -5,7 +5,7 @@ label: Run test python script
 
 description: |
   Grab values and print output
-type: python
+type: python3
 
 labels:
   collection: gSkillets
