@@ -13,7 +13,7 @@ labels:
 variables:
   - name: ADDR_OBJ_NAME
     description: Address Object Name
-    default: "panos-01"
+    default: panos-01
     type_hint: text
     help_text: This is the object name.
   - name: ADDR_OBJ_CIDR
