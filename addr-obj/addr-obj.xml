@@ -1,0 +1,3 @@
+<entry name={{ADDR_OBJ_NAME}}>
+    <ip-netmask>{{ADDR_IP_CIDR}}</ip-netmask>
+</entry>
