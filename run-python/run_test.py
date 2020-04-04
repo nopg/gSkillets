@@ -10,7 +10,8 @@ if __name__ == "__main__":
     parser.add_argument("-u", "--username", help="Example Username", type=str, required=True)
     parser.add_argument("-p", "--password", help="Example Password", type=str, required=True)
     args = parser.parse_args()
-    
+    targs = {"username": "test","password": "ptest"}
+   # parser.parse_args(namespace=targs)
     print(parser.print_help())
     print(parser.print_usage())
 
