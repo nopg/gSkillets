@@ -3,7 +3,7 @@
 # unique snippet name
 name: pfcSkillet
 # label used for menu selection
-label: pfc_base_config
+label: pfc base config
 description: security/nat rules, static routes for webapp/conductor
 
 # type of device configuration
