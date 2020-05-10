@@ -67,7 +67,6 @@ snippets:
   - name: address-583006
       xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/address
       element: |-
-          <address>
                 <entry name="Azure Health Check IP">
                   <ip-netmask>168.63.129.16/32</ip-netmask>
                 </entry>
@@ -95,8 +94,6 @@ snippets:
                 <entry name="Conductor Public IP">
                   <ip-netmask>51.143.105.24/32</ip-netmask>
                 </entry>
-              </address>
-
 
   - name: entry-585987
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
