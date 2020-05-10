@@ -1,0 +1,389 @@
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+# unique snippet name
+name: pfcSkillet
+# label used for menu selection
+label: pfc_base_config
+description: security/nat rules, static routes for webapp/conductor
+
+# type of device configuration
+# common types are panorama, panos, and template
+# https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst
+type: panos
+# preload static or default-based templates
+extends:
+
+# grouping of like snippets for dynamic menu creation in panhandler
+labels:
+  collection:
+    - gSkillets
+
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# variables section
+# ---------------------------------------------------------------------
+# variables used in the configuration templates
+# type_hint defines the form field used by panhandler
+# type_hints can be text, ip_address, or dropdown
+variables:
+  - name: hostname
+    description: Firewall hostname
+    default: myFirewall
+    type_hint: text
+  - name: choices
+    description: sample dropdown list
+    default: choices
+    type_hint: dropdown
+    dd_list:
+      - key: option1
+        value: option1
+      - key: option2
+        value: option2
+# ---------------------------------------------------------------------
+# end of variables section
+
+# snippets section
+# ---------------------------------------------------------------------
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+# NOTE: The following snippets are auto-generated and ordered automatically.
+# Changing the content of the snippet may be necessary, but do NOT change the order
+
+# There is a variable called snippets that we can use to auto-generate this section for us
+snippets:
+  - name: entry-585987
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
+    element: |-
+        <entry name="ethernet1/1">
+                      <layer3>
+                        <ipv6>
+                          <neighbor-discovery>
+                            <router-advertisement>
+                              <enable>no</enable>
+                            </router-advertisement>
+                          </neighbor-discovery>
+                        </ipv6>
+                        <ndp-proxy>
+                          <enabled>no</enabled>
+                        </ndp-proxy>
+                        <dhcp-client>
+                          <create-default-route>no</create-default-route>
+                        </dhcp-client>
+                        <lldp>
+                          <enable>no</enable>
+                        </lldp>
+                        <interface-management-profile>MP-Public</interface-management-profile>
+                      </layer3>
+                    </entry>
+
+  - name: entry-358312
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
+    element: |-
+        <entry name="ethernet1/2">
+                      <layer3>
+                        <ipv6>
+                          <neighbor-discovery>
+                            <router-advertisement>
+                              <enable>no</enable>
+                            </router-advertisement>
+                          </neighbor-discovery>
+                        </ipv6>
+                        <ndp-proxy>
+                          <enabled>no</enabled>
+                        </ndp-proxy>
+                        <dhcp-client>
+                          <create-default-route>no</create-default-route>
+                        </dhcp-client>
+                        <lldp>
+                          <enable>no</enable>
+                        </lldp>
+                      </layer3>
+                    </entry>
+
+  - name: interface-768037
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]
+    element: |-
+        <interface>
+                      <member>ethernet1/1</member>
+                      <member>ethernet1/2</member>
+                    </interface>
+
+  - name: routing-table-264848
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]
+    element: |-
+        <routing-table>
+                      <ip>
+                        <static-route>
+                          <entry name="default">
+                            <nexthop>
+                              <ip-address>VNet Public Gateway</ip-address>
+                            </nexthop>
+                            <bfd>
+                              <profile>None</profile>
+                            </bfd>
+                            <path-monitor>
+                              <enable>no</enable>
+                              <failure-condition>any</failure-condition>
+                              <hold-time>2</hold-time>
+                            </path-monitor>
+                            <interface>ethernet1/1</interface>
+                            <metric>10</metric>
+                            <destination>0.0.0.0/0</destination>
+                            <route-table>
+                              <unicast/>
+                            </route-table>
+                          </entry>
+                          <entry name="Azure-probe">
+                            <path-monitor>
+                              <enable>no</enable>
+                              <failure-condition>any</failure-condition>
+                              <hold-time>2</hold-time>
+                            </path-monitor>
+                            <nexthop>
+                              <ip-address>VNet Public Gateway</ip-address>
+                            </nexthop>
+                            <bfd>
+                              <profile>None</profile>
+                            </bfd>
+                            <interface>ethernet1/1</interface>
+                            <metric>10</metric>
+                            <destination>168.63.129.16/32</destination>
+                            <route-table>
+                              <unicast/>
+                            </route-table>
+                          </entry>
+                          <entry name="WebApp Private">
+                            <nexthop>
+                              <ip-address>VNet Private Gateway</ip-address>
+                            </nexthop>
+                            <bfd>
+                              <profile>None</profile>
+                            </bfd>
+                            <path-monitor>
+                              <enable>no</enable>
+                              <failure-condition>any</failure-condition>
+                              <hold-time>2</hold-time>
+                            </path-monitor>
+                            <interface>ethernet1/2</interface>
+                            <metric>10</metric>
+                            <destination>WebApp Private IP</destination>
+                            <route-table>
+                              <unicast/>
+                            </route-table>
+                          </entry>
+                        </static-route>
+                      </ip>
+                    </routing-table>
+
+  - name: entry-366743
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
+    element: |-
+        <entry name="Private">
+                      <network>
+                        <layer3>
+                          <member>ethernet1/2</member>
+                        </layer3>
+                      </network>
+                    </entry>
+
+  - name: entry-853783
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
+    element: |-
+        <entry name="Public">
+                      <network>
+                        <layer3>
+                          <member>ethernet1/1</member>
+                        </layer3>
+                      </network>
+                    </entry>
+
+  - name: interface-management-profile-608671
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/profiles
+    element: |-
+        <interface-management-profile>
+                    <entry name="MP-Public">
+                      <permitted-ip>
+                        <entry name="168.63.129.16/32"/>
+                      </permitted-ip>
+                      <https>yes</https>
+                    </entry>
+                  </interface-management-profile>
+
+  - name: address-583006
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]
+    element: |-
+        <address>
+                    <entry name="Azure Health Check IP">
+                      <ip-netmask>168.63.129.16/32</ip-netmask>
+                    </entry>
+                    <entry name="Private Interface">
+                      <ip-netmask>10.252.82.10</ip-netmask>
+                    </entry>
+                    <entry name="Public Interface">
+                      <ip-netmask>10.252.81.10</ip-netmask>
+                    </entry>
+                    <entry name="WebApp Private IP">
+                      <ip-netmask>10.252.82.4</ip-netmask>
+                    </entry>
+                    <entry name="WebApp Public IP">
+                      <ip-netmask>13.83.103.241</ip-netmask>
+                    </entry>
+                    <entry name="VNet Private Gateway">
+                      <ip-netmask>10.252.82.1</ip-netmask>
+                    </entry>
+                    <entry name="VNet Public Gateway">
+                      <ip-netmask>10.252.81.1</ip-netmask>
+                    </entry>
+                    <entry name="Conductor Private IP">
+                      <ip-netmask>30.40.50.60/32</ip-netmask>
+                    </entry>
+                    <entry name="Conductor Public IP">
+                      <ip-netmask>51.143.105.24/32</ip-netmask>
+                    </entry>
+                  </address>
+
+  - name: default-security-rules-843609
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase
+    element: |-
+        <default-security-rules>
+                      <rules>
+                        <entry name="intrazone-default" uuid="ec41d6d9-3719-403f-88db-060a8308ca06">
+                          <action>deny</action>
+                          <log-start>no</log-start>
+                          <log-end>yes</log-end>
+                        </entry>
+                      </rules>
+                    </default-security-rules>
+
+  - name: security-120433
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase
+    element: |-
+        <security>
+                      <rules>
+                        <entry name="Inbound-WebApp" uuid="0e6d9960-0f09-4a46-b50d-5655a3dadb19">
+                          <to>
+                            <member>Private</member>
+                          </to>
+                          <from>
+                            <member>Public</member>
+                          </from>
+                          <source>
+                            <member>any</member>
+                          </source>
+                          <destination>
+                            <member>WebApp Public IP</member>
+                          </destination>
+                          <source-user>
+                            <member>any</member>
+                          </source-user>
+                          <category>
+                            <member>any</member>
+                          </category>
+                          <application>
+                            <member>ssl</member>
+                            <member>web-browsing</member>
+                          </application>
+                          <service>
+                            <member>application-default</member>
+                          </service>
+                          <hip-profiles>
+                            <member>any</member>
+                          </hip-profiles>
+                          <action>allow</action>
+                        </entry>
+                        <entry name="Allow Health Checks" uuid="45dc080e-fd84-465e-bd3a-8b0fddd7c287">
+                          <to>
+                            <member>Public</member>
+                          </to>
+                          <from>
+                            <member>Public</member>
+                          </from>
+                          <source>
+                            <member>Azure Health Check IP</member>
+                          </source>
+                          <destination>
+                            <member>Public Interface</member>
+                          </destination>
+                          <source-user>
+                            <member>any</member>
+                          </source-user>
+                          <category>
+                            <member>any</member>
+                          </category>
+                          <application>
+                            <member>any</member>
+                          </application>
+                          <service>
+                            <member>service-https</member>
+                          </service>
+                          <hip-profiles>
+                            <member>any</member>
+                          </hip-profiles>
+                          <action>allow</action>
+                          <log-start>yes</log-start>
+                        </entry>
+                      </rules>
+                    </security>
+
+  - name: nat-241686
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase
+    element: |-
+        <nat>
+                      <rules>
+                        <entry name="Inbound-WebApp" uuid="28496a82-9ad3-4a76-9a9a-e2e9fdd1c96d">
+                          <source-translation>
+                            <dynamic-ip-and-port>
+                              <interface-address>
+                                <interface>ethernet1/2</interface>
+                              </interface-address>
+                            </dynamic-ip-and-port>
+                          </source-translation>
+                          <to>
+                            <member>Public</member>
+                          </to>
+                          <from>
+                            <member>Public</member>
+                          </from>
+                          <source>
+                            <member>any</member>
+                          </source>
+                          <destination>
+                            <member>WebApp Public IP</member>
+                          </destination>
+                          <service>any</service>
+                          <destination-translation>
+                            <translated-address>WebApp Private IP</translated-address>
+                          </destination-translation>
+                        </entry>
+                        <entry name="Inbound-Conductor" uuid="6919e506-193a-4fc3-88cd-8ffb7d2f09c3">
+                          <source-translation>
+                            <dynamic-ip-and-port>
+                              <interface-address>
+                                <interface>ethernet1/2</interface>
+                              </interface-address>
+                            </dynamic-ip-and-port>
+                          </source-translation>
+                          <to>
+                            <member>Public</member>
+                          </to>
+                          <from>
+                            <member>Public</member>
+                          </from>
+                          <source>
+                            <member>any</member>
+                          </source>
+                          <destination>
+                            <member>Conductor Public IP</member>
+                          </destination>
+                          <service>any</service>
+                          <destination-translation>
+                            <translated-address>Conductor Private IP</translated-address>
+                          </destination-translation>
+                        </entry>
+                      </rules>
+                    </nat>
+
+
+# ---------------------------------------------------------------------
+# end of snippets section
