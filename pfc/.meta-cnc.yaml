@@ -212,8 +212,8 @@ snippets:
                     </entry>
 
   - name: address-583006
-      xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/address
-      element: |-
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/address
+    element: |-
           <entry name="Azure Health Check IP">
             <ip-netmask>168.63.129.16/32</ip-netmask>
           </entry>
