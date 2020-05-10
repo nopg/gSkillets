@@ -52,6 +52,18 @@ variables:
 
 # There is a variable called snippets that we can use to auto-generate this section for us
 snippets:
+  - name: interface-management-profile-608671
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/profiles
+    element: |-
+        <interface-management-profile>
+                    <entry name="MP-Public">
+                      <permitted-ip>
+                        <entry name="168.63.129.16/32"/>
+                      </permitted-ip>
+                      <https>yes</https>
+                    </entry>
+                  </interface-management-profile>
+
   - name: entry-585987
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
     element: |-
@@ -197,18 +209,6 @@ snippets:
                         </layer3>
                       </network>
                     </entry>
-
-  - name: interface-management-profile-608671
-    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/profiles
-    element: |-
-        <interface-management-profile>
-                    <entry name="MP-Public">
-                      <permitted-ip>
-                        <entry name="168.63.129.16/32"/>
-                      </permitted-ip>
-                      <https>yes</https>
-                    </entry>
-                  </interface-management-profile>
 
   - name: address-583006
     xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]
