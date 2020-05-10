@@ -65,7 +65,7 @@ snippets:
                   </interface-management-profile>
 
   - name: address-583006
-      xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]
+      xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/address
       element: |-
           <address>
                 <entry name="Azure Health Check IP">
